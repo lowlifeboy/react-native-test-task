@@ -16,9 +16,7 @@ export default class App extends React.Component {
                     <Scene
                         key="tab2"
                         component={Tab2}
-                        title='Player'
-                        back={true}
-                        // hideNavBar={true}
+                        hideNavBar={true}
                     />
                     <Scene key="tab3" component={Tab3} title="Screen3"/>
                     <Scene key="tab4" component={Tab4} title="Screen4"/>

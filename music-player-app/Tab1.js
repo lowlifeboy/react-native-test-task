@@ -29,6 +29,7 @@ export default class Tab1 extends React.Component {
         Actions.jump('_tab2', {index: index});
     };
 
+
     render() {
         return (
             <View style={styles.container}>

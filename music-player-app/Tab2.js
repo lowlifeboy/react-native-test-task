@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import {Audio} from 'expo';
 import {AntDesign} from '@expo/vector-icons';
+import {Actions} from 'react-native-router-flux';
 
 class PlaylistItem {
     constructor(name, uri, image) {
@@ -66,7 +67,7 @@ export default class App extends React.Component {
 
 
     componentWillMount() {
-        console.log(this.props.index);
+
         Audio.setAudioModeAsync({
             playThroughEarpieceAndroid: false,
             allowsRecordingIOS: true,
@@ -75,13 +76,12 @@ export default class App extends React.Component {
             shouldDuckAndroid: true,
             interruptionModeAndroid: Audio.INTERRUPTION_MODE_ANDROID_DO_NOT_MIX,
         });
-        
+
         this._loadNewPlaybackInstance(true);
     }
 
-    componentWillReceiveProps(){
-        console.log(this.props.index);
-        this.index = this.props.index;
+    componentWillReceiveProps(props) {
+        this.index = props.index;
         this._updateScreenForLoading(true);
         this._loadNewPlaybackInstance(true);
     }
@@ -220,18 +220,21 @@ export default class App extends React.Component {
             <View/>
         ) : (
             <View style={styles.container}>
-                {/*<View style={styles.navBar}>*/}
-                    {/*<Button*/}
-                        {/*style={styles.button}*/}
-                        {/*title='back'*/}
-                        {/*color="#919191"*/}
-                    {/*>*/}
-                        {/*Back*/}
-                    {/*</Button>*/}
-                    {/*<Text>*/}
-                        {/*{PLAYLIST[this.index].name}*/}
-                    {/*</Text>*/}
-                {/*</View>*/}
+                <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
+                    <View style={{margin: 10}}>
+                        <Button
+                            onPress={() => Actions.jump('_tab1') }
+                            title="Back"
+                            color="black"
+                        />
+                    </View>
+                    <View>
+                        <Text style={{marginTop: 15}}>
+                            {PLAYLIST[this.index].name}
+                        </Text>
+                    </View>
+                </View>
+
                 <View style={styles.portraitContainer}>
                     <Image
                         style={styles.portrait}
@@ -345,19 +348,6 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         marginBottom: 100,
     },
-    // navBar: {
-    //     flexDirection: 'row',
-    //     paddingTop: 40,
-    //     fontSize: 18,
-    //     position: 'absolute',
-    // },
-    // button: {
-    //     fontSize: 12,
-    //     marginTop: 15,
-    //     marginRight: 15,
-    //     paddingLeft: -40
-    //
-    // },
     buttonsContainerTopRow: {
         maxHeight: 40,
         minWidth: DEVICE_WIDTH / 2.0,
