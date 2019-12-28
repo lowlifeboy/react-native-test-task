@@ -51,7 +51,6 @@ class HomeScreen extends React.Component {
 
     return (
       <View style={{ flex: 1 }}>
-        {/* <StatusBar hidden={true} /> */}
         <View style={header}>
           <FontAwesome5 name={'play'} style={headerIcon} />
           <Text style={headerText}>Video Player</Text>
