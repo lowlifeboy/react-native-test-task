@@ -10,10 +10,7 @@
   "dependencies": {
     "expo": "~36.0.0",
     "expo-av": "~8.0.0",
-<<<<<<< HEAD
     "expo-constants": "~8.0.0",
-=======
->>>>>>> ef910c7943419e5b7e21aed1a8361b933fe53636
     "react": "~16.9.0",
     "react-dom": "~16.9.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-36.0.0.tar.gz",
